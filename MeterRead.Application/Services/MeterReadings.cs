@@ -2,6 +2,4 @@
 
 namespace MeterRead.Application.Services;
 
-public class MeterReadings : List<MeterReading>
-{
-}
+public class MeterReadings : List<MeterReading>;

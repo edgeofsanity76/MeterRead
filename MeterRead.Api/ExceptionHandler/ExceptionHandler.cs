@@ -1,7 +1,7 @@
 ﻿using MeterRead.Application.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace MeterRead.Api;
+namespace MeterRead.Api.ExceptionHandler;
 
 public class ExceptionHandler : IExceptionHandler
 {
@@ -24,7 +24,7 @@ public class ExceptionHandler : IExceptionHandler
         var body = new
         {
             StatusCode = responseCode,
-            Message = exception.Message,
+            exception.Message,
             Detail = exception.InnerException?.Message
         };
 

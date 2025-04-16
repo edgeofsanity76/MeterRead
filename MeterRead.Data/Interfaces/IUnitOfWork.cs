@@ -1,6 +1,6 @@
 ﻿using MeterRead.Data.Repositories;
 
-namespace MeterRead.Data;
+namespace MeterRead.Data.Interfaces;
 
 public interface IUnitOfWork
 {

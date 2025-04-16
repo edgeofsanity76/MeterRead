@@ -1,9 +1,10 @@
-using MeterRead.Api;
 using MeterRead.Api.Endpoints;
+using MeterRead.Api.ExceptionHandler;
 using MeterRead.Application.Interfaces;
 using MeterRead.Application.Services;
 using MeterRead.Data;
 using MeterRead.Data.Context;
+using MeterRead.Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

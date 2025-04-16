@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MeterRead.Data;
+namespace MeterRead.Data.Entities;
 
 public partial class Account
 {

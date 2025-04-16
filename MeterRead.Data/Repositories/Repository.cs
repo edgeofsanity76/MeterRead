@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using MeterRead.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeterRead.Data.Repositories;

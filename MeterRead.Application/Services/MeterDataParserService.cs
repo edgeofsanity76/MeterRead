@@ -41,7 +41,7 @@ public class MeterDataParserService :  IMetaDataParserService
                 MeterReadingValue = columns[2].PadLeft(5, '0')
             };
         }
-        catch (Exception e)
+        catch
         {
             //Log here
             meterReading = null!;

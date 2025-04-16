@@ -17,7 +17,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeterRead.Application\MeterRead.Application.csproj" />
+    <ProjectReference Include="..\MeterRead.Data\MeterRead.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestFiles\TestData_InvalidHeader.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\TestData_Valid.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

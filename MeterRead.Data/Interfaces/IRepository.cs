@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeterRead.Data.Repositories;
+namespace MeterRead.Data.Interfaces;
 
 public interface IRepository<TEntity>
 {

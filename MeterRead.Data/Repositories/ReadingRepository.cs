@@ -1,4 +1,5 @@
 ﻿using MeterRead.Data.Context;
+using MeterRead.Data.Entities;
 
 namespace MeterRead.Data.Repositories
 {
