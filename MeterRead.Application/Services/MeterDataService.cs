@@ -10,6 +10,7 @@ public class MeterDataService(IUnitOfWork unitOfWork) : IMeterDataService
     {
         var readingEntities = readings.Select(r => new Reading
         {
+            Account = unitOfWork.AccountRepository.Get(a => a.AccountId == r.AccountId).FirstOrDefault()!,
             AccountId = r.AccountId,
             DateTime = r.MeterReadingDate.ToString("yyyy-MM-dd HH:mm:ss"),
             Value = r.MeterReadingValue

@@ -1,4 +1,6 @@
-﻿using MeterRead.Data.Entities;
+﻿using System;
+using System.Collections.Generic;
+using MeterRead.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeterRead.Data.Context;
@@ -46,5 +48,3 @@ public partial class MeterReadDbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
-
-

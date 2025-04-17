@@ -6,9 +6,9 @@ namespace MeterRead.Application.Services;
 
 public class MeterDataValidationService(IUnitOfWork unitOfWork) : IMeterValidationService
 {
-    public (MeterReadings validReadings, MeterReadings invalidReadings) ValidateReadings(MeterReadings readings)
+    public (MeterReadings validReadings, List<InvalidMeterReading> invalidReadings) ValidateReadings(MeterReadings readings)
     {
-        var invalidReadings = new MeterReadings();
+        var invalidReadings = new List<InvalidMeterReading>();
         var validReadings = new MeterReadings();
 
         var duplicateReadings = GetDuplicateReadings(readings);
@@ -40,18 +40,25 @@ public class MeterDataValidationService(IUnitOfWork unitOfWork) : IMeterValidati
 
     private List<InvalidMeterReading> GetDuplicateReadings(List<MeterReading> readings)
     {
-        var duplicateReadings = (from reading in readings
-            let existingReading = unitOfWork.ReadingRepository.Get(r => r.AccountId == reading.AccountId)
-            let isDuplicate = existingReading.Any(r => DateTime.Parse(r.DateTime) >= reading.MeterReadingDate && r.Value == reading.MeterReadingValue)
-            where isDuplicate
-            select new InvalidMeterReading
+        var duplicateReadings = new List<InvalidMeterReading>();
+
+        foreach (var reading in readings)
+        {
+            var existingReading = unitOfWork.ReadingRepository.Get(r => r.AccountId == reading.AccountId && r.DateTime == reading.MeterReadingDate.ToString("yyyy-MM-dd HH:mm:ss")).FirstOrDefault();
+
+            if (existingReading != null)
             {
-                ReadingId = reading.ReadingId,
-                AccountId = reading.AccountId,
-                MeterReadingDate = reading.MeterReadingDate,
-                MeterReadingValue = reading.MeterReadingValue,
-                Reason = "Duplicate reading"
-            }).ToList();
+                duplicateReadings.Add(new InvalidMeterReading
+                {
+                    ReadingId = reading.ReadingId,
+                    AccountId = reading.AccountId,
+                    MeterReadingDate = reading.MeterReadingDate,
+                    MeterReadingValue = reading.MeterReadingValue,
+                    Reason = "Duplicate reading"
+                });
+            }
+        }
+
         return duplicateReadings;
     }
 }

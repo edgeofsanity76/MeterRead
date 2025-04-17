@@ -1,8 +1,9 @@
-﻿using MeterRead.Application.Services;
+﻿using MeterRead.Application.Models;
+using MeterRead.Application.Services;
 
 namespace MeterRead.Application.Interfaces;
 
 public interface IMeterValidationService
 {
-    (MeterReadings validReadings, MeterReadings invalidReadings) ValidateReadings(MeterReadings readings);
+    (MeterReadings validReadings, List<InvalidMeterReading> invalidReadings) ValidateReadings(MeterReadings readings);
 }
