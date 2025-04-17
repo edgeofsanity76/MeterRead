@@ -1,4 +1,4 @@
-﻿using MeterRead.Application.Services;
+﻿using MeterRead.Application.Models;
 
 namespace MeterRead.Application.Interfaces;
 

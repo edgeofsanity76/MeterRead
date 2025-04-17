@@ -1,4 +1,5 @@
 ﻿using MeterRead.Application.Interfaces;
+using MeterRead.Application.Models;
 using MeterRead.Data.Entities;
 using MeterRead.Data.Interfaces;
 
