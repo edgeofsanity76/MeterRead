@@ -1,10 +1,11 @@
-﻿using MeterRead.Data.Repositories;
+﻿using MeterRead.Data.Entities;
+using MeterRead.Data.Repositories;
 
 namespace MeterRead.Data.Interfaces;
 
 public interface IUnitOfWork
 {
-    AccountRepository AccountRepository { get; }
-    ReadingRepository ReadingRepository { get; }
+    IRepository<Account> AccountRepository { get; }
+    IRepository<Reading> ReadingRepository { get; }
     Task SaveChangesAsync();
 }

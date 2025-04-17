@@ -6,7 +6,7 @@ namespace MeterRead.Application.Services;
 
 public class MeterDataParserService :  IMetaDataParserService
 {
-    public async Task<List<MeterReading>> ParseFileAsync(Stream stream)
+    public async Task<MeterReadings> ParseFileAsync(Stream stream)
     {
         using var reader = new StreamReader(stream);
 
@@ -40,6 +40,10 @@ public class MeterDataParserService :  IMetaDataParserService
                 MeterReadingDate = DateTime.Parse(columns[1]),
                 MeterReadingValue = columns[2].PadLeft(5, '0')
             };
+        }
+        catch (InvalidRowLengthException)
+        {
+            throw;
         }
         catch
         {

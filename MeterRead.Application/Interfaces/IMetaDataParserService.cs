@@ -1,8 +1,8 @@
-﻿using MeterRead.Application.Models;
+﻿using MeterRead.Application.Services;
 
 namespace MeterRead.Application.Interfaces;
 
 public interface IMetaDataParserService
 {
-    Task<List<MeterReading>> ParseFileAsync(Stream stream);
+    Task<MeterReadings> ParseFileAsync(Stream stream);
 }

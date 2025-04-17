@@ -12,11 +12,13 @@
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeterRead.Api\MeterRead.Api.csproj" />
     <ProjectReference Include="..\MeterRead.Application\MeterRead.Application.csproj" />
     <ProjectReference Include="..\MeterRead.Data\MeterRead.Data.csproj" />
   </ItemGroup>
@@ -26,7 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TestFiles\TestData_InvalidHeader.csv">
+    <None Update="TestFiles\TestData_InvalidHeaderLength.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\TestData_MissingHeader.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\TestData_InvalidRowLength.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestFiles\TestData_Valid.csv">

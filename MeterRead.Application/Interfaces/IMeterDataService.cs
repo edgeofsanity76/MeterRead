@@ -1,9 +1,9 @@
 ﻿using MeterRead.Application.Models;
+using MeterRead.Application.Services;
 
 namespace MeterRead.Application.Interfaces;
 
 public interface IMeterDataService
 {
-    Task ImportReadings(IEnumerable<MeterReading> readings);
-    IEnumerable<InvalidMeterReading> ValidateReadings(List<MeterReading> readings);
+    Task ImportReadingsAsync(MeterReadings readings);
 }
