@@ -42,12 +42,13 @@ public class MeterDataValidationService(IUnitOfWork unitOfWork) : IMeterValidati
     {
         var duplicateReadings = new List<InvalidMeterReading>();
 
+        //TODO: Convert to LINQ
         foreach (var reading in readings)
         {
             var existingReading = unitOfWork.ReadingRepository.Get(r => r.AccountId == reading.AccountId && r.DateTime == reading.MeterReadingDate.ToString("yyyy-MM-dd HH:mm:ss")).FirstOrDefault();
 
             if (existingReading != null)
-            {
+            { 
                 duplicateReadings.Add(new InvalidMeterReading
                 {
                     ReadingId = reading.ReadingId,
